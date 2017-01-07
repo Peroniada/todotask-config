@@ -1,34 +1,11 @@
-server:
-    port:
-         ${PORT:8000}
-
-message: it works just fine !
+server.port=${PORT:8000}
+message = ToDo Service works!
 
 # define the destination to which the input MessageChannel should be bound
-spring:
-    cloud:
-        stream:
-            bindings:
-                input:
-                    destination:
-                            beers
+spring.cloud.stream.bindings.input.destination = beers
 
 # ensures 1 node in a group gets message (point-to-point, not a broadcast)
-spring:
-    cloud:
-        stream:
-            bindings:
-                input:
-                  groups:
-                      beers-group
+spring.cloud.stream.bindings.input.group = beers-group
 
 # ensure that the Q is durable
-spring:
-    cloud:
-        stream:
-            bindings:
-                input:
-                    durableSubscription:
-                                        true
-
-
+spring.cloud.stream.bindings.input.durableSubscription = true
